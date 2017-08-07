@@ -2,16 +2,24 @@ package me.kikorose.demo.controllers;
 
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Null;
+@Entity
+Index index;
+
+
 
 public class Index {
 @NotNull
     private String name;
+
 @NotNull
     private String email;
+
 @NotNull
     private String organization;
-    @Null
-    String startDate;
+
+@Null
+    private String startDate;
+
 @Null
     private String enddate;
 

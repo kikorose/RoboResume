@@ -20,31 +20,31 @@ public class MainController {
 
     @GetMapping("/")
     public String defaultRequest(Model model){
-        String myMessage = "welcome to the Book Database";
+        String myMessage = "welcome to Robo Resume";
         model.addAttribute("message", myMessage);
         return "welcome";
     }
 
 
-    @GetMapping("/addbook")
-    public String addBook(Model model) {
-        model.addAttribute("newBook", new Book());
-        return "addbook";
+    @GetMapping("/addinfo")
+    public String addInfo(Model model) {
+        model.addAttribute("newInfo", new info());
+        return "addinfo";
     }
 
-    @PostMapping("/addbook")
-    public String postBook(@Valid @ModelAttribute("newBook") Book book, BindingResult bindingResult)
+    @PostMapping("/addinfo")
+    public String postBook(@Valid @ModelAttribute("newInfo") Info info, BindingResult bindingResult)
     {
 
         if(bindingResult.hasErrors()){
-            return "addbook";
+            return "addinfo";
         }
-        bookRepo.save(book);
+        infoRepo.save(info);
         return "result";
     }
 
 
-    @GetMapping("/add6books")
+    @GetMapping("/addinfo")
     public String initDatabase(){
         Iterable<Info> infolist;
         ArrayList<Info>toadd = new ArrayList<>();
@@ -75,22 +75,78 @@ public class MainController {
 
         infoRepo.save(infolist);
 
-        return "allinfo";
+        return "addinfo";
 
     }
 
 
-    @GetMapping("/showallbooks")
-    public String showAllBooks(Model model){
+    @GetMapping("/allinfo")
+    public String allInfo(Model model){
 
-        Iterable<Book> allbook = bookRepo.findAll();
-        model.addAttribute("allBook", allbook);
-        return "showallbooks";
+        Iterable<Info> allinfo = infoRepo.findAll();
+        model.addAttribute("AllInfo", allinfo);
+        return "allinfo";
         //return "findallbooks";
 
     }
-}
 
-}
-}
+    @GetMapping("/email"){
+
+        public String email(Model model){
+            model.addAttribute("newEmail", new email());
+            return "email";
+
+        }
+
+        @GetMapping("/startdate"){
+
+            public String startDate(Model model){
+                model.addAttribute("new StartDate", new startdate());
+                return "startdate";
+
+            }
+
+            @PostMapping("/startdate"){
+
+                public String startDate(){
+
+               try{
+                Date Format formatter = new simpleDate(){
+                       Format("dd-mm-yyyy");
+                Formatter.setLenient(False);
+                date=formatter.parse(05-05-1928);
+
+
+                }catch(parseException e){
+                    e.printStackTrace();
+                   }
+            }
+
+            @GetMapping("/enddate"){
+
+            }
+
+                public String endDate(Model model){
+                    model.addAttribute("new EndDate", new enddate());
+                    return "enddate";
+            }
+
+            @PostMapping("/enddate"){
+                    public String endDate(){
+
+                        try{
+                            Date Format formatter = new simpleDate(){
+                                Format("dd-mm-yyyy");
+                Formatter.setLenient(False);
+                                date=formatter.parse(05-05-1928);
+
+
+                            }catch(parseException e){
+                                e.printStackTrace(); }
+        }
+    }
+    }
+
+    }
+    }
 
