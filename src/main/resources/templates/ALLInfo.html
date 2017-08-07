@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head lang="en">
+
+    <meta http-equiv="Content-Type" content = "text/html; charset=UTF-8"/>
+
+    <title>Robo Resume</title>
+
+</head>
+
+<body>
+
+
+
+<table>
+
+    <tr>
+
+        <th>Name</th>
+
+        <th>Email</th>
+
+        <th>Organization</th>
+
+        <th>StartDate</th>
+
+        <th>EndDate</th>
+
+    </tr>
+
+
+
+    <tr th:each="info : ${allInfo}">
+
+        <td th:text="${info.name}"></td>
+
+        <td th:text="${info.email}"></td>
+
+        <td th:text="${info.organization}"></td>
+
+        <td th:text="${info.startdate}"></td>
+
+        <td th:text="${info.enddate}"></td>
+
+
+
+    </tr>
+
+
+

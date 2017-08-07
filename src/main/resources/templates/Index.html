@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Getting Started: Handling Form Submission</title>
+    <meta http-equiv="Content-Type" content = "text/html; charset=UTF-8" />
+</head>
+<body>
+<p>This is where you add your Information. Add your Information in the following form:</p>
+<h1>Product Form</h1>
+<div>
+    <!-- Start Date -->
+    <div>
+        <label class="col-offset-half col-3" for="order_contractStart">Contract Start:</label>
+        <input class="col-offset-half col-7" type="date" id="order_contractStart" name="order_contractStart">
+    </div>
+    <!-- End Date -->
+    <div>
+        <label class="col-offset-half col-3" for="order_contractEnd">Contract End:</label>
+        <input class="col-offset-half col-7" type="date" id="order_contractEnd" name="order_contractEnd">
+
+        <form action = "#" th:action="@{/index}" th:object="${index}" method="post">
+
+    <span th:if="${#fields.hasErrors('sku')}" th:error="*{name}">Name has error</span>
+    <p>Enter Name: <input type="text" th:field="*{name}" /></p>
+
+    <span th:if="${#fields.hasErrors('email')}" th:error="*{email}">Email has error</span>
+    <p>Enter Email: <input type="text" th:field="*{email}" /></p>
+
+
+    <span th:if="${#fields.hasErrors('organization')}" th:error="*{organization}">Organization has error</span>
+    <p>Enter Organization: <input type="text" th:field="*{organization}" /></p>
+
+    <span th:if="${#fields.hasErrors('startdate')}" th:error="*{startDate}">StartDate has error</span>
+    <p>Enter StartDate: <input type="text" th:field="*{startDate}" /></p>
+
+    <span th:if="${#fields.hasErrors('endDate')}" th:error="*{}">End Date has error</span>
+    <p>Enter EndDate: <input type="text" th:field="*{endDate}" /></p>
+    <p><input type="submit" value="Add product" /> <input type="reset" value="Reset" /></p>
+</form>
+    </div>
+</body>
+</html>
